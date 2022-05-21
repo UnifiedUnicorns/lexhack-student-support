@@ -1,0 +1,73 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+main .form-control
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* Center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+main h1 {
+    width: auto;
+    text-align: center;
+    color: black;
+    margin: 25px 50px 50px 50px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+main h2 {
+    width: auto;
+    text-align: center;
+    color: black;
+    margin: 25px 50px 25px 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+main h4 {
+    margin: 0px 50px 40px 50px;
+}
+
+main p {
+    width: auto;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+}
+
+main select {
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+main .text {
+    width: auto;
+    text-align: center;
+    color: black;
+    margin: 25px 50px 50px 50px;
+    font-size: 50px;
+    font-weight: bold;
+    border-style: hidden;
+}
