@@ -87,8 +87,14 @@ main .text {
 
 .grid-container {
   display: grid;
-  column-gap: 50px;
-  row-gap: 50px;
-  justify-content: center;
-  align-content: space-evenly;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 10px;
+  background-color: #737373;
+  padding: 10px;
+  grid-template-rows: 70px;
+  align-content: center;
+}
+
+.grid-container > div {
+  font-size: 40px;
 }
