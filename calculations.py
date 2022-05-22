@@ -11,10 +11,13 @@ def solve_quadratic(a,b,c):
 
     return sol
 
+
 def pyramid_calc(height,base,slant,perimeter):
-    s_area=base+(perimeter*slant*0.5)
-    volume=1/3*base*height
+    height, base, slant, perimeter = float(height), float(base), float(slant), float(perimeter)
+    s_area = base+(perimeter*slant*0.5)
+    volume = 1/3*base*height
     return [s_area, volume]
+
 
 def generate_quadratic():
     a=str(random.randint(1,50))

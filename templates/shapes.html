@@ -7,10 +7,27 @@
 {% block main %}
     <h1>
         Shapes Perimeter and Area Calculator
-    </h1>
-    <br href='/shapes/rectangle'><button type="button">Rectangle</button></br>
-    <br href='/shapes/circle'><button type="button">Circle</button></br>
-    <br href='/shapes/triangle'><button type="button">Triangle</button></br>
-    <br href='/shapes/triareg_figures'><button type="button">Triangle</button></br>
-
+    </h1><br>
+    <div class="grid-container">
+        <div class="grid-item">
+            <form action='/shapes/rectangle' method="get">
+                <button type="submit">Rectangles</button>
+            </form>
+        </div>
+        <div class="grid-item">
+            <form action='/shapes/circle' method="get">
+                <button type="submit">Circles</button>
+            </form>
+        </div>
+        <div class="grid-item">
+            <form action='/shapes/triangle' method="get">
+                <button type="submit">Triangles</button>
+            </form>
+        </div>
+        <div class="grid-item">
+            <form action="/solids/regular_polygons" method="get">
+                <button type="submit">Regular Polygons</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

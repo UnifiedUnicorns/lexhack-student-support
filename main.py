@@ -53,7 +53,7 @@ def pyramid():
         perimeter = request.form.get("perimeter")
         sol = calculations.pyramid_calc(height,base,slant,perimeter)
 
-        return render_template("pyramid", sol=sol)
+        return render_template("pyramid.html", sol=sol)
 
     return render_template("pyramid.html")
 
