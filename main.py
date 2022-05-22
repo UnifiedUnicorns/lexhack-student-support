@@ -40,7 +40,7 @@ def quadratic_practice():
 
 @app.route('/figures', methods=["GET"])
 def figures():
-
+    return render_template("figures.html")
 
 
 def errorhandler(e):
