@@ -89,7 +89,7 @@ main .text {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
-  background-color: #737373;
+  background-color: #5c5c5c;
   padding: 10px;
   grid-template-rows: 70px;
   align-content: center;
