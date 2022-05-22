@@ -38,9 +38,29 @@ def quadratic_practice():
 
     return render_template("quadratics_practice.html", sol=sol, len=len(sol), abc=[float(a) for a in thing[1]])
 
-@app.route('/figures', methods=["GET"])
-def figures():
-    return render_template("figures.html")
+
+@app.route('/solids', methods=["GET"])
+def solids():
+    return render_template("solids.html")
+
+
+@app.route('/solids/pyramid', methods=["GET", "POST"])
+def pyramid():
+    if request.method == "POST":
+        height = request.form.get("height")
+        base = request.form.get("base")
+        slant = request.form.get("slant")
+        perimeter = request.form.get("perimeter")
+        sol = calculations.pyramid_calc(height,base,slant,perimeter)
+
+        return render_template("pyramid", sol=sol)
+
+    return render_template("pyramid.html")
+
+
+@app.route('/shapes', methods=["GET"])
+def shapes():
+    return render_template("shapes.html")
 
 
 def errorhandler(e):

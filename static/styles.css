@@ -84,3 +84,11 @@ main .text {
     color: black;
     font-size: 20px;
 }
+
+.grid-container {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 50px;
+  justify-content: center;
+  align-content: space-evenly;
+}

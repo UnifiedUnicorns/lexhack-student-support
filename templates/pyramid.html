@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Pyramids
+{% endblock %}
+
+{% block main %}
+    <h1>Pyramid</h1><br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Square_pyramid_Drawing.jpg" alt="Pyramid">
+
+    <form action="/solid/pyramid" method="post">
+        <label for="A" class="labeel" step="0.0001">Height: </label><br>
+        <input type="number" id="A" name="height" autocomplete="off" value="Number"><br><br>
+        <label for="B" class="labeel" step="0.0001">Base Area: </label><br>
+        <input type="number" id="B" name="base" autocomplete="off" value="Number"><br><br>
+        <label for="C" class="labeel" step="0.0001">Slant Height: </label><br>
+        <input type="number" id="C" name="slant" autocomplete="off" value="Number"><br><br>
+        <label for="D" class="labeel" step="0.0001">Base Perimeter </label><br>
+        <input type="number" id="D" name="perimeter" autocomplete="off" value="Number"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if sol is defined %}
+        <label class="solution">Surface Area: {{ sol[0] }}u&sup2;</label><br>
+        <label class="solution">Volume: {{ sol[1] }}u&sup3;</label>
+    {% endif %}
+{% endblock %}
