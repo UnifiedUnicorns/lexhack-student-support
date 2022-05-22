@@ -1,5 +1,6 @@
 from flask import Flask, flash, redirect, render_template, request, session
 from helpers import apology
+import calculations
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 
 # Configure application
@@ -15,8 +16,27 @@ def index():
 
 
 @app.route("/quadratics", methods=["GET", "POST"])
-def quadratic():
+def quadratics():
+    if request.method == "POST":
+        a = request.form.get("A")
+        b = request.form.get("B")
+        c = request.form.get("C")
+
+        sol = calculations.solve_quadratic(a,b,c)
+        print(sol)
+        print(a,b,c)
+
+        return render_template("quadratics.html", sol=sol, len=len(sol), abc=[float(a), float(b), float(c)])
+
     return render_template("quadratics.html")
+
+
+@app.route("/quadratics/practice", methods=["GET"])
+def quadratic_practice():
+    thing = calculations.generate_quadratic()
+    sol = thing[0]
+
+    return render_template("quadratics_practice.html", sol=sol, len=len(sol), abc=[float(a) for a in thing[1]])
 
 
 def errorhandler(e):

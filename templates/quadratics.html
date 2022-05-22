@@ -4,6 +4,52 @@
     Quadratics
 {% endblock %}
 
-{% block body %}
-    <-- Add functionality for quadratics -->
+{% block main %}
+    <script>
+       function show() {
+            document.getElementById("explanation").hidden = false;
+       }
+
+       function hide() {
+            document.getElementById("explanation").hidden = true;
+       }
+    </script>
+
+    <h1>Quadratics</h1>
+    <h2><a href="/quadratics/practice">Get Some Practice</a></h2>
+    <h2>(ax&sup2;+bx+c)</h2><br><br>
+    <form action="/quadratics" method="post">
+        <label for="A" class="labeel">A (Coefficient of the 2nd degree term):</label><br>
+        <input type="number" id="A" name="A" autocomplete="off" value="Number"><br><br>
+        <label for="B" class="labeel">B (Coefficient of the 1st degree term):</label><br>
+        <input type="number" id="B" name="B" autocomplete="off" value="Number"><br><br>
+        <label for="C" class="labeel">C (Constant term):</label><br>
+        <input type="number" id="C" name="C" autocomplete="off" value="Number"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if len is defined %}
+        {% if len == 1 %}
+            <label class="solution">{{ sol[0] }}</label>
+        {% else %}
+            <label class="solution">Solutions: {{ sol[0] }} and {{ sol[1] }}</label>
+        {% endif %}
+        <button onclick="show()">Show Me How</button><br>
+        <div id="explanation" hidden>
+            <label for="eq" class="labeel">Quadratic Equation: </label><br>
+            <img id="eq" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/00c22777378f9c594c71158fea8946f2495f2a28" alt="Quadratic Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>x=(-{{ abc[1] }}&plusmn;&radic;{{ abc[1] }}&sup2;-4&times;{{ abc[0] }}&times;{{ abc[2] }})/2&times;{{ abc[0] }}</h2><br><br>
+            <label class="labeel">Simplify: </label><br>
+            <h2>x=(-{{ abc[1] }}+&radic;{{ abc[1]*abc[1] - 4*abc[0]*abc[2] }})/{{ 2*abc[0] }} and x=(-{{ abc[1] }}-&radic;{{ abc[1]*abc[1] - 4*abc[0]*abc[2] }})/{{ 2*abc[0] }}</h2>
+            <label class="labeel">Solve: </label><br>
+            {% if len == 1 %}
+                <h2>x={{ sol[0] }}</h2>
+            {% else %}
+                <h2>x={{ sol[0] }} and {{ sol[1] }}</h2>
+            {% endif %}
+            <button onclick="hide()">Hide</button>
+        </div>
+    {% endif %}
 {% endblock %}
