@@ -165,6 +165,8 @@ def regular_polygons():
         s = request.form.get("s")
         l = request.form.get("l")
 
+        sol = calculations.calc_reg_polygon(s, l)
+
 
 def errorhandler(e):
     """Handle error"""
