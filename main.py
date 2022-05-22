@@ -38,6 +38,10 @@ def quadratic_practice():
 
     return render_template("quadratics_practice.html", sol=sol, len=len(sol), abc=[float(a) for a in thing[1]])
 
+@app.route('/figures', methods=["GET"])
+def figures():
+    return render_template("figures.html")
+
 
 def errorhandler(e):
     """Handle error"""
