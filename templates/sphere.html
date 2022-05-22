@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sphere
+{% endblock %}
+
+{% block main %}
+    <script>
+       function show() {
+            document.getElementById("explanation").hidden = false;
+       }
+
+       function hide() {
+            document.getElementById("explanation").hidden = true;
+       }
+    </script>
+
+    <h1>Sphere</h1>
+    <img style="width: 512px; height: 512px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Sphere.svg/2048px-Sphere.svg.png" alt="Sphere">
+
+
+    <form action="/solids/sphere" method="post">
+        <label for="A" class="labeel">Radius: </label><br>
+        <input type="number" id="A" name="radius" autocomplete="off" value="Number" step="any"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if sol is defined %}
+        <label class="solution">Surface Area: {{ sol[0] }}u&sup2;</label><br>
+        <label class="solution">Volume: {{ sol[1] }}u&sup3;</label>
+        <br><button onclick="show()">Show Me How</button><br>
+        <div id="explanation" hidden>
+            <h1 for="eq">Surface Area: </h1><br>
+            <img style="width: 384px; height: 182px;" src="https://www.voovers.com/wp-content/uploads/2020/05/sphere-surface-area-768x384.jpg" alt="Sphere Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>4&times;&pi;&times;{{ r }}&sup2;</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Surface Area: {{ sol[0] }}</h2><br><br>
+
+            <h1 for="eq">Volume: </h1><br>
+            <img style="width: 384px; height: 182px;" src="https://www.voovers.com/wp-content/uploads/2020/05/volume-of-a-sphere-768x384.jpg" alt="Sphere Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>4/3&times;&pi;&times;{{ r }}&sup3;</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Volume: {{ sol[1] }}</h2><br><br>
+            <button onclick="hide()">Hide</button>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Circle
+{% endblock %}
+
+{% block main %}
+    <script>
+       function show() {
+            document.getElementById("explanation").hidden = false;
+       }
+
+       function hide() {
+            document.getElementById("explanation").hidden = true;
+       }
+    </script>
+
+    <h1>Circle</h1><br>
+    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20190415125919/circ2.png" alt="Circle">
+
+    <form action="/shapes/circle" method="post">
+        <label for="A" class="labeel">Radius: </label><br>
+        <input type="number" id="A" name="radius" autocomplete="off" value="Number" step="any"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if sol is defined %}
+        <label class="solution">Area: {{ sol[0] }}u&sup2;</label><br>
+        <label class="solution">Circumference: {{ sol[1] }}u</label>
+        <br><button onclick="show()">Show Me How</button><br>
+        <div id="explanation" hidden>
+            <h1 for="eq">Area: </h1><br>
+            <img id="eq" src="https://cdn.discordapp.com/attachments/766869137090936852/977995407378489374/unknown.png" alt="Circle Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>&pi;&times;{{ radius }}&sup2;</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Area: {{ sol[0] }}</h2><br><br>
+
+            <h1 for="eq1">Circumference: </h1><br>
+            <img id="eq1" style="width: 384px; height: 182px;" src="https://cdn.discordapp.com/attachments/766869137090936852/977998815661523004/unknown.png" alt="Circle Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>2&times;&pi;&times;{{ radius }}</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Circumference: {{ sol[1] }}</h2><br><br>
+            <button onclick="hide()">Hide</button>
+        </div>
+    {% endif %}
+{% endblock %}

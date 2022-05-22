@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quadrilaterals
+{% endblock %}
+
+{% block main %}
+    <script>
+       function show() {
+            document.getElementById("explanation").hidden = false;
+       }
+
+       function hide() {
+            document.getElementById("explanation").hidden = true;
+       }
+    </script>
+
+    <h1>Quadrilateral</h1><br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Six_Quadrilaterals.svg" alt="Quadrilaterals"><br><br><br>
+
+    <form action="/shapes/quadrilateral" method="post">
+        <select id="qtype" class="form-select mx-auto w-auto" name="type">
+            <option disabled="" selected="">Select a Quadrilateral to Calculate</option>
+            <option value="rect">Rectangle (Requires base and height)</option>
+            <option value="trap">Trapezoid (Requires height, both bases, and both sides)</option>
+            <option value="rhomb">Rhombus (Requires side and both diagonals)</option>
+        </select><br><br>
+        <label for="A" id="Al" class="labeel">Height: </label><br>
+        <input type="number" id="A" name="height" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="B" id="Bl" class="labeel">Base: </label><br>
+        <input type="number" id="B" name="base" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="C" id="Cl" class="labeel">Base 2: </label><br>
+        <input type="number" id="C" name="base_2" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="D" id="Dl" class="labeel">Side: </label><br>
+        <input type="number" id="D" name="side" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="E" id="El" class="labeel">Side 2: </label><br>
+        <input type="number" id="E" name="side_2" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="F" id="Fl" class="labeel">Diagonal: </label><br>
+        <input type="number" id="F" name="diag" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="G" id="Gl" class="labeel">Diagonal 2: </label><br>
+        <input type="number" id="G" name="diag_2" autocomplete="off" value="Number" step="any"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if sol is defined %}
+        <label class="solution">Area: {{ sol[0] }}u&sup2;</label><br>
+        <label class="solution">Perimeter: {{ sol[1] }}u&sup3;</label>
+        <br><button onclick="show()">Show Me How</button><br>
+        {% if type == "rect" %}
+            <div id="explanation" hidden>
+                <h1 for="eq">Area: </h1><br>
+                <img id="eq" src="http://www.msrblog.com/wp-content1/uploads/2017/07/qwe.jpg" alt="Rectangle Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>{{ pers[0] }}&times;{{ pers[1] }}</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Area: {{ sol[0] }}</h2><br><br>
+
+                <h1 for="eq1">Perimeter: </h1><br>
+                <img id="eq1" src="https://d1shwc4yijf729.cloudfront.net/assets/2020/05/01/556-5562121-perimeter-of-a-rectangle-rectangle-area-and-perimeter_21_5eab4f0c540eb.webp" alt="Rectangle Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>2&times;({{ pers[0] }} + {{ pers[1] }})</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Perimeter: {{ sol[1] }}</h2><br><br>
+                <button onclick="hide()">Hide</button>
+            </div>
+        {% elif type == "trap" %}
+            <div id="explanation" hidden>
+                <h1 for="eq">Area: </h1><br>
+                <img id="eq" src="https://www.basic-mathematics.com/images/trapezoidarea.gif" alt="Trapezoid Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>&frac12;&times;({{ pers[1] }}&plus;{{ pers[2] }})&times;{{ pers[0] }}</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Area: {{ sol[0] }}</h2><br><br>
+
+                <h1 for="eq1">Perimeter: </h1><br>
+                <img id="eq1" style="width: 384px; height: 182px;" src="https://www.voovers.com/wp-content/uploads/2020/04/trapezoid-perimeter-768x384.jpg" alt="Trapezoid Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>{{ pers[1] }}&plus;{{ pers[2] }}&plus;{{ pers[3] }}&plus;{{ pers[4] }}</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Perimeter: {{ sol[1] }}</h2><br><br>
+                <button onclick="hide()">Hide</button>
+            </div>
+        {% elif type == "rhomb"%}
+            <div id="explanation" hidden>
+                <h1 for="eq">Area: </h1><br>
+                <img id="eq" src="https://cdn1.byjus.com/wp-content/uploads/2020/08/Area-of-rhombus.png" alt="Rhombus Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>&frac12;&times;{{ pers[1] }}&times;{{ pers[2] }}</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Area: {{ sol[0] }}</h2><br><br>
+
+                <h1 for="eq1">Perimeter: </h1><br>
+                <img id="eq1" style="width: 384px; height: 182px;" src="https://www.voovers.com/wp-content/uploads/2020/04/rhombus-perimeter-768x384.jpg" alt="Pyramid Equation"><br><br>
+                <label class="labeel">Input Numbers: </label><br>
+                <h2>4&times;{{ pers[0] }}</h2><br><br>
+                <label class="labeel">Solve: </label><br>
+                <h2>Perimeter: {{ sol[1] }}</h2><br><br>
+                <button onclick="hide()">Hide</button>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

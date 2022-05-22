@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Pyramids
+    Prism
 {% endblock %}
 
 {% block main %}
@@ -15,19 +15,17 @@
        }
     </script>
 
-    <h1>Pyramid</h1><br>
-    <h2>Please note: A cone is a pyramid with a circular base</h2><br><br>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Square_pyramid_Drawing.jpg" alt="Pyramid">
+    <h1>Prism</h1>
+    <img src="https://www.onlinemathlearning.com/image-files/triangular-rectangular-prism.png" alt="Pris">
 
-    <form action="/solids/pyramid" method="post">
+
+    <form action="/solids/prism" method="post">
         <label for="A" class="labeel">Height: </label><br>
         <input type="number" id="A" name="height" autocomplete="off" value="Number" step="any"><br><br>
         <label for="B" class="labeel">Base Area: </label><br>
-        <input type="number" id="B" name="base" autocomplete="off" value="Number" step="any"><br><br>
-        <label for="C" class="labeel">Slant Height: </label><br>
-        <input type="number" id="C" name="slant" autocomplete="off" value="Number" step="any"><br><br>
-        <label for="D" class="labeel">Base Perimeter: </label><br>
-        <input type="number" id="D" name="perimeter" autocomplete="off" value="Number" step="any"><br><br>
+        <input type="number" id="B" name="area" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="C" class="labeel">Base Perimeter:</label><br>
+        <input type="number" id="C" name="perimeter" autocomplete="off" value="Number" step="any"><br><br>
         <input type="submit" value="Calculate">
         <input type="reset"><br><br>
     </form>
@@ -38,19 +36,18 @@
         <br><button onclick="show()">Show Me How</button><br>
         <div id="explanation" hidden>
             <h1 for="eq">Surface Area: </h1><br>
-            <img id="eq" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7EojrIVEiOSRcel_l4SEZ9-XzU96BtHniJg&usqp=CAU" alt="Pyramid Equation"><br><br>
+            <img style="width: 384px; height: 182px;" src="https://www.ontrack-media.net/geometry/gm4l7image21.jpg" alt="Prism Equation"><br><br>
             <label class="labeel">Input Numbers: </label><br>
-            <h2>&frac12;&times;{{ pers[3] }}&times;{{ pers[2] }}&plus;{{ pers[1] }}</h2><br><br>
+            <h2>2&times;{{ pers[2] }}&plus;{{ pers[1] }}{{ pers[3] }}</h2><br><br>
             <label class="labeel">Solve: </label><br>
             <h2>Surface Area: {{ sol[0] }}</h2><br><br>
 
-            <h1 for="eq1">Volume: </h1><br>
-            <img id="eq1" style="width: 384px; height: 182px;" src="https://www.voovers.com/wp-content/uploads/2020/05/volume-of-a-pyramid-768x384.jpg" alt="Pyramid Equation"><br><br>
+            <h1 for="eq">Volume: </h1><br>
+            <img src="https://cdn.discordapp.com/attachments/766869137090936852/977983642657771520/unknown.png" alt="Prism Equation"><br><br>
             <label class="labeel">Input Numbers: </label><br>
-            <h2>&frac13;&times;{{ pers[1] }}&times;{{ pers[0] }}</h2><br><br>
+            <h2>{{ pers[2] }}&times;{{ pers[1] }}</h2><br><br>
             <label class="labeel">Solve: </label><br>
             <h2>Volume: {{ sol[1] }}</h2><br><br>
             <button onclick="hide()">Hide</button>
-        </div>
     {% endif %}
 {% endblock %}

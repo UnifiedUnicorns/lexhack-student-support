@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Triangle
+{% endblock %}
+
+{% block main %}
+    <script>
+       function show() {
+            document.getElementById("explanation").hidden = false;
+       }
+
+       function hide() {
+            document.getElementById("explanation").hidden = true;
+       }
+    </script>
+
+    <h1>Triangle</h1><br>
+    <img src="https://www.open.edu/openlearn/pluginfile.php/94675/mod_oucontent/oucontent/779/e41d0e53/11839bc9/mu120_b_i068i.small.jpg" alt="Triangle">
+    <form action="/shapes/triangle" method="post">
+        <label for="A" class="labeel">Side 1: </label><br>
+        <input type="number" id="A" name="s1" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="B" class="labeel">Side 2: </label><br>
+        <input type="number" id="B" name="s2" autocomplete="off" value="Number" step="any"><br><br>
+        <label for="C" class="labeel">Side 3: </label><br>
+        <input type="number" id="C" name="s3" autocomplete="off" value="Number" step="any"><br><br>
+        <input type="submit" value="Calculate">
+        <input type="reset"><br><br>
+    </form>
+
+    {% if sol is defined %}
+        <label class="solution">Area: {{ sol[0] }}u&sup2;</label><br>
+        <label class="solution">Perimeter: {{ sol[1] }}u</label>
+        <br><button onclick="show()">Show Me How</button><br>
+        <div id="explanation" hidden>
+            <h1 for="eq">Area: </h1><br>
+            <img id="eq" src="https://cdn.discordapp.com/attachments/766869137090936852/978006089733922846/unknown.png" alt="Triangle Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>s=&frac12;({{ pers[0] }}&plus;{{ pers[1] }}&plus;{{ pers[2] }})</h2><br><br>
+            <h2>s={{ sol[2] }}</h2><br><br>
+            <h2>Square root of {{ sol[2] }}({{ sol[2] }} - {{ pers[0] }})({{ sol[2] }} - {{ pers[1] }})({{ sol[2] }} - {{ pers[2] }})</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Area: {{ sol[0] }}</h2><br><br>
+
+            <h1 for="eq1">Perimeter: </h1><br>
+            <img id="eq1" style="width: 384px; height: 182px;" src="https://cdn.discordapp.com/attachments/766869137090936852/977998815661523004/unknown.png" alt="Circle Equation"><br><br>
+            <label class="labeel">Input Numbers: </label><br>
+            <h2>{{ pers[0] }}+{{ pers[1] }}+{{ pers[2] }}</h2><br><br>
+            <label class="labeel">Solve: </label><br>
+            <h2>Perimeter: {{ sol[1] }}</h2><br><br>
+            <button onclick="hide()">Hide</button>
+        </div>
+    {% endif %}
+{% endblock %}
