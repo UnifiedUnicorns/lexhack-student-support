@@ -98,3 +98,14 @@ main .text {
 .grid-container > div {
   font-size: 40px;
 }
+
+.main {
+  padding-bottom: 30px
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    font-size: 20px;
+    margin-top: auto;
+}

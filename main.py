@@ -167,6 +167,10 @@ def regular_polygons():
 
         sol = calculations.calc_reg_polygon(s, l)
 
+        return render_template("polygon.html", sol=sol, pers=[float(s), float(l)])
+
+    return render_template("polygon.html")
+
 
 def errorhandler(e):
     """Handle error"""

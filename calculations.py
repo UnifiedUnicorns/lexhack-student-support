@@ -89,6 +89,7 @@ def rhomb_calc(s, d, d1):
 
 
 def calc_reg_polygon(s, l):
-  a = (s/2)/(math.tan(math.radians(360/(2*s))))
-  p = l*s
-  return [(p*a)/2, p]
+    s, l = float(s), float(l)
+    a = (s/2)/(math.tan(math.radians(360/(2*s))))
+    p = l*s
+    return [(p*a)/2, p]
